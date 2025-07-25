@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: metabase
+    env: docker
+    plan: free
+    autoDeploy: true
