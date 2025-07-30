@@ -1,6 +1,20 @@
+databases:
+  - name: metabase-db
+    databaseName: metabase
+    user: metabase_user
+    plan: free
+
 services:
   - type: web
-    name: metabase
-    env: docker
+    name: metabase-creahive
     plan: free
+    env: docker
+    repo: https://github.com/toqeer74/creahive-metabase-deploy
     autoDeploy: true
+    envVars:
+      - key: MB_DB_CONNECTION_URI
+        fromDatabase:
+          name: metabase-db
+          property: connectionString
+      - key: MB_ENCRYPTION_SECRET_KEY
+        value: <random-32-char-string>
